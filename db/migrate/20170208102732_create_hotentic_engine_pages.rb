@@ -9,6 +9,7 @@ class CreateHotenticEnginePages < ActiveRecord::Migration[5.0]
       t.decimal :priority
       t.boolean :active
       t.string :metadata
+      t.string :template_path
 
     end
   end

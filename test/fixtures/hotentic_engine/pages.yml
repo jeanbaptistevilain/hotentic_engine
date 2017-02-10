@@ -1,11 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+page1:
+  id:            1
+  site:          site1
+  order:         1
+  path:          'homepage'
+  priority:      0.9
+  active:        true
+  template_path: '/shared/template/_homepage.html'
+
+page2:
+  id:            2
+  site:          site1
+  order:         2
+  path:          'page'
+  priority:      0.7
+  active:        true
+  template_path: '/shared/template/_page.html'
+
+page3:
+  id:            3
+  site:          site1
+  order:         3
+  path:          'about'
+  priority:      0.8
+  active:        true
+  template_path: '/shared/template/_about.html'

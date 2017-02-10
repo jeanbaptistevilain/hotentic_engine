@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208105233) do
+ActiveRecord::Schema.define(version: 20170210153041) do
 
   create_table "hotentic_engine_image_containers", force: :cascade do |t|
-    t.integer  "hotentic_engine_site_id"
-    t.integer  "hotentic_engine_page_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["hotentic_engine_page_id"], name: "idx_image_containers_to_page_id"
-    t.index ["hotentic_engine_site_id"], name: "idx_image_containers_to_site_id"
+    t.integer  "site_id"
+    t.integer  "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "idx_image_containers_to_page_id"
+    t.index ["site_id"], name: "idx_image_containers_to_site_id"
   end
 
   create_table "hotentic_engine_pages", force: :cascade do |t|
-    t.integer  "hotentic_engine_site_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "site_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "order"
     t.string   "path"
     t.decimal  "priority"
     t.boolean  "active"
     t.string   "metadata"
-    t.index ["hotentic_engine_site_id"], name: "idx_pages_to_site_id"
+    t.string   "template_path"
+    t.index ["site_id"], name: "idx_pages_to_site_id"
   end
 
   create_table "hotentic_engine_site_templates", force: :cascade do |t|
@@ -39,23 +40,24 @@ ActiveRecord::Schema.define(version: 20170208105233) do
     t.string   "reference"
     t.string   "theme"
     t.text     "template_pages"
+    t.string   "template_path"
   end
 
   create_table "hotentic_engine_sites", force: :cascade do |t|
-    t.integer  "hotentic_engine_site_template_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "site_template_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "name"
-    t.index ["hotentic_engine_site_template_id"], name: "idx_sites_to_site_template_id"
+    t.index ["site_template_id"], name: "idx_sites_to_site_template_id"
   end
 
   create_table "hotentic_engine_text_containers", force: :cascade do |t|
-    t.integer  "hotentic_engine_site_id"
-    t.integer  "hotentic_engine_page_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["hotentic_engine_page_id"], name: "idx_text_containers_to_page_id"
-    t.index ["hotentic_engine_site_id"], name: "idx_text_containers_to_site_id"
+    t.integer  "site_id"
+    t.integer  "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "idx_text_containers_to_page_id"
+    t.index ["site_id"], name: "idx_text_containers_to_site_id"
   end
 
 end
