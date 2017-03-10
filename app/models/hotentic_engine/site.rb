@@ -7,10 +7,6 @@ module HotenticEngine
 
     validates_uniqueness_of :name
 
-    def to_param
-      name.parameterize
-    end
-
 
   end
 end

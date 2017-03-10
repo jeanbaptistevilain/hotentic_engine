@@ -7,8 +7,8 @@ require "hotentic_engine/version"
 Gem::Specification.new do |s|
   s.name        = "hotentic_engine"
   s.version     = HotenticEngine::VERSION
-  s.authors     = ["Jean-Baptiste Vilain"]
-  s.email       = ["jbvilain@gmail.com"]
+  s.authors     = ["Jean-Baptiste Vilain", "Nicolas Beaudouin"]
+  s.email       = ["jbvilain@gmail.com", "n.beaudouin@outlook.fr"]
   s.homepage    = "http://hotentic.com"
   s.summary     = "A site engine for the tourism industry professionals."
   s.description = ""
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.0.0", ">= 5.0.0.1"
+  s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
 end

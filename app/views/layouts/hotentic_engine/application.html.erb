@@ -4,6 +4,9 @@
   <title>Hotentic engine</title>
   <%= stylesheet_link_tag    "hotentic_engine/application", media: "all" %>
   <%= javascript_include_tag "hotentic_engine/application" %>
+
+  <%= yield :template_stylesheet %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

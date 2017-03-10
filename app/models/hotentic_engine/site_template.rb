@@ -4,9 +4,17 @@ module HotenticEngine
 
     store :template_pages, accessors: [ :pages_location ], coder: JSON
 
-    def to_param
-      reference.parameterize
+    validates_uniqueness_of :reference
+
+    def full_template_path
+      @path = "shared/#{reference}/#{template_path}"
     end
+
+    def template_stylesheets
+      @stylesheets_path = "templates/#{reference}"
+    end
+
+
 
   end
 end

@@ -5,10 +5,10 @@ module HotenticEngine
 
     def index
       @sites = HotenticEngine::Site.all
-    end
+    end 
 
     def show
-      @site = HotenticEngine::Site.find_by_name(params[:id])
+      redirect_to controller: :pages, action: 'show', site_id: params[:id], path: 'homepage'
     end
 
 

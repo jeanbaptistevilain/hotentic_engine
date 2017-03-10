@@ -1,0 +1,19 @@
+
+
+<% content_for :template_stylesheet do %>
+    <%= stylesheet_link_tag @site.site_template.template_stylesheets %>
+<% end %>
+
+<%= render @site.site_template.full_template_path do %>
+    <%= render @page.full_page_template_path %>
+    <%= yield :script_page %>
+<% end %>
+
+
+<script type="text/javascript">
+    $("hotentic-editor").click(edit);
+
+    function edit() {
+        console.log("i've been clicked : \"" + $(this).text() + "\"");
+    }
+</script>
