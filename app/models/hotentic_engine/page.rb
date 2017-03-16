@@ -2,8 +2,8 @@ module HotenticEngine
   class Page < ApplicationRecord
 
     belongs_to :site, :class_name => 'HotenticEngine::Site'
-    has_many :text_containers, :class_name => 'HotenticEngine::TextContainer'
-    has_many :image_containers, :class_name => 'HotenticEngine::ImageContainer'
+    has_many :text_containers, :class_name => 'HotenticEngine::TextContainer', dependent: :destroy
+    has_many :image_containers, :class_name => 'HotenticEngine::ImageContainer', dependent: :destroy
 
     validates_uniqueness_of :path, :template_path
 

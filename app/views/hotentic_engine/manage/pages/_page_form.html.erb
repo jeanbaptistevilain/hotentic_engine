@@ -1,0 +1,40 @@
+
+<%= form_for([:manage, @site, @page]) do |p| %>
+
+    <div>
+      <h3>Données principale</h3>
+      <p>
+        <%= p.label :label %>
+        <%= p.text_field :label, placeholder: 'Libellé' %>
+      </p>
+      <p>
+        <%= p.label :path %>
+        <%= p.text_field :path, placeholder: 'Route de la page' %>
+      </p>
+      <p>
+        <%= p.label :active %>
+        <%= p.check_box :active %>
+      </p>
+      <p>
+        <%= p.label 'Page templage' %>
+        <%= p.text_field :template_path %>
+      </p>
+    </div>
+    <div>
+      <h3>Données de référencement</h3>
+      <p>
+        <%= p.label :title %>
+        <%= p.text_field :title %>
+      </p>
+      <p>
+        <%= p.label :description %>
+        <%= p.text_field :description %>
+      </p>
+    </div>
+    <%= p.hidden_field :site_id %>
+
+    <p>
+      <%= p.submit %>
+    </p>
+
+<% end %>

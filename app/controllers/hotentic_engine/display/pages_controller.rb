@@ -8,10 +8,8 @@ module HotenticEngine
 
       if params[:path] != nil
         @page = @site.pages.where("path = ?", params[:path]).first
-        @page_content = @page.text_containers
       else
         @page = @site.pages.where("path = ?", 'homepage').first
-        @page_content = @page.text_containers
       end
     end
 

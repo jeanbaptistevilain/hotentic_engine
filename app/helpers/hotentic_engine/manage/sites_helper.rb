@@ -1,4 +1,4 @@
 module HotenticEngine
-  module SitesHelper
+  module Manage::SitesHelper
   end
 end

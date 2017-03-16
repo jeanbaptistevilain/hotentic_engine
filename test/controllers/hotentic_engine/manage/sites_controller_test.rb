@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module HotenticEngine
-  class SiteDisplayControllerTest < ActionDispatch::IntegrationTest
+  class Manage::SitesControllerTest < ActionDispatch::IntegrationTest
     include Engine.routes.url_helpers
 
     # test "the truth" do

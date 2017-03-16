@@ -1,0 +1,10 @@
+
+<%= form_for([:manage, @site]) do |s| %>
+  <p>
+    <%= s.label :name %>
+    <%= s.text_field :name, placeholder: 'Site name' %>
+  </p>
+  <p>
+    <%= s.submit %>
+  </p>
+<% end %>

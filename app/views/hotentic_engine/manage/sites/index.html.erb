@@ -1,0 +1,19 @@
+
+<h1>All sites</h1>
+
+<section>
+  <% unless @sites.empty? %>
+    <div>
+      <table>
+        <% @sites.each do |site| %>
+        <tr>
+          <td><%= site.name %></td>
+          <td><%= link_to 'Show', manage_site_path(site) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+      <p>There are no sites at the moment</p>
+  <% end %>
+</section>
