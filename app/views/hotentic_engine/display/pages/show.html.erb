@@ -3,6 +3,10 @@
     <%= stylesheet_link_tag @site.site_template.template_stylesheets %>
 <% end %>
 
+<% content_for :navigation_bar do %>
+    <%= render 'layouts/hotentic_engine/shared_partials/navigation' %>
+<% end %>
+
 <%= render @site.site_template.full_template_path do %>
     <%= render @page.full_page_template_path %>
     <%= yield :script_page %>

@@ -11,5 +11,11 @@ module HotenticEngine
       HotenticEngine::Page.where("site_id = ?", id).order(:order).first
     end
 
+    def text_content(reference)
+      container = text_containers.find_or_create_by!(reference: reference)
+      container.content
+    end
+
+
   end
 end
