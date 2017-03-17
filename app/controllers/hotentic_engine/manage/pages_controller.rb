@@ -2,35 +2,35 @@ require_dependency "hotentic_engine/application_controller"
 
 module HotenticEngine
   class Manage::PagesController < ApplicationController
+    before_action :set_site
 
     def index
+      @pages = @site.pages
     end
 
     def new
-      @site = HotenticEngine::Site.find(params[:site_id])
       @page = HotenticEngine::Page.new(site_id: @site.id)
     end
 
     def create
       @page = HotenticEngine::Page.new(pages_params)
       if @page.save
-        redirect_to manage_site_path(@page.site_id)
+        redirect_to manage_site_pages_path(@site.id)
       else
-        redirect_to new_manage_site_page_path(@page.site)
+        render action: :new
       end
     end
 
     def edit
       @page = HotenticEngine::Page.find(params[:id])
-      @site = HotenticEngine::Site.find(@page.site_id)
     end
 
     def update
       @page = HotenticEngine::Page.find(params[:id])
       if @page.update_attributes(pages_params)
-        redirect_to manage_site_path(@page.site_id)
+        redirect_to manage_site_pages_path(@site.id)
       else
-        redirect_to edit_manage_page_path(@page.id)
+        render action: :edit
       end
     end
 
@@ -45,6 +45,10 @@ module HotenticEngine
                                    :title, :description, :metadata, :site_id)
     end
 
-
+    def set_site
+      unless params[:site].blank?
+        @site = HotenticEngine::Site.find(params[:site])
+      end
+    end
   end
 end

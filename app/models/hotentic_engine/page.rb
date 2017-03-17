@@ -5,7 +5,7 @@ module HotenticEngine
     has_many :text_containers, :class_name => 'HotenticEngine::TextContainer', dependent: :destroy
     has_many :image_containers, :class_name => 'HotenticEngine::ImageContainer', dependent: :destroy
 
-    validates_uniqueness_of :path, :template_path
+    validates_uniqueness_of :path
 
     def full_page_template_path
       @path = "shared/#{site.site_template.reference}/#{template_path}"

@@ -18,14 +18,10 @@ HotenticEngine::Engine.routes.draw do
     end
   end
 
-  scope module: 'manage' do
-    scope 'gestion', as: 'manage' do
-      resources :sites, path: '/', shallow: true do
-        resources :pages
-      end
+  namespace :manage, path: 'gestion' do
+    scope ':site', as: 'site' do
+      resources :pages
     end
   end
-
-
 
 end

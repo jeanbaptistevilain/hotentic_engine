@@ -1,0 +1,19 @@
+<section>
+  <h2><%= @site.name %></h2>
+  <div>
+    <h3>Pages :</h3>
+    <table>
+      <tbody>
+      <% @pages.each do |page| %>
+          <tr>
+            <td><%= page.label %></td>
+            <td><%= page.path %></td>
+            <td><%= page.active %></td>
+            <td><%= link_to 'Modifier', edit_manage_site_page_path(@site.id, page) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Ajouter', new_manage_site_page_path(@site) %>
+  </div>
+</section>
