@@ -2,3 +2,9 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+text-editor, link-editor {
+    background-color: #666666;
+}
+text-editor:hover, link-editor:hover {
+    background-color: #DADADA;
+}

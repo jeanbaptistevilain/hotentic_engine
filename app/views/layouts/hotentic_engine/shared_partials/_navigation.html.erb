@@ -2,7 +2,7 @@
 <nav id="main_navigation">
   <ul>
     <% @site.pages.order(:order).each do |p| %>
-      <li><%= link "link_#{p.id}", p.path, true %></li>
+      <li><%= link "link_#{p.id}", p.path, @site %></li>
     <% end %>
   </ul>
 </nav>
