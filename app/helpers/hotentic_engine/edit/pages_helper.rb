@@ -25,4 +25,3 @@ module HotenticEngine
 
   end
 end
-

@@ -1,0 +1,33 @@
+
+<section class="popup">
+  <div class="popup_container">
+    <h2>Edition du container sélectionné :</h2>
+
+    <textarea name="content_editor" class="content_editor">
+    </textarea>
+    <input name="reference_container" class="reference_container" />
+
+    <button id="cancel_editor">Annuler</button>
+    <button id="accept_editor">Valider</button>
+  </div>
+</section>
+
+<script type="application/javascript">
+  $(document).ready(function() {
+      CKEDITOR.replace('content_editor');
+
+      $('#cancel_editor').click(function() {
+          $('.popup').hide();
+      });
+
+      $('#accept_editor').click(function() {
+          new_content = CKEDITOR.instances['content_editor'].getData();
+          console.log("New values : " + new_content);
+          console.log("TextContainer reference : " + $(".reference_container").val());
+
+
+      })
+
+
+  });
+</script>

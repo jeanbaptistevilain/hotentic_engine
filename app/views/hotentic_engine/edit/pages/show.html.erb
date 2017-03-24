@@ -1,9 +1,10 @@
 
-
+<!-- insert the template stylesheets of the site template -->
 <% content_for :template_stylesheet do %>
     <%= stylesheet_link_tag @site.site_template.template_stylesheets %>
 <% end %>
 
+<!-- render the navigation bar in the location chosen by the user -->
 <% content_for :navigation_bar do %>
     <%= render 'layouts/hotentic_engine/shared_partials/navigation' %>
 <% end %>
@@ -13,11 +14,17 @@
     <%= yield :script_page %>
 <% end %>
 
+<!-- render the edition popup -->
+<%= render 'layouts/hotentic_engine/shared_partials/edition_popup' %>
+
 
 <script type="text/javascript">
-    $("hotentic-editor").click(edit);
+    $("text-editor").click(edit);
 
     function edit() {
-        console.log("i've been clicked : \"" + $(this).text() + "\"");
+        $(".popup").show();
+        CKEDITOR.instances['content_editor'].setData($(this).text());
+        $(".reference_container").val($(this).attr('id')).hide();
+
     }
 </script>
