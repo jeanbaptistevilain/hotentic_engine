@@ -16,7 +16,7 @@
           </div>
       <% end %>
 
-      <h3>Données principale</h3>
+      <h3>Données principales</h3>
       <p>
         <%= p.label :label %>
         <%= p.text_field :label, placeholder: 'Libellé' %>
@@ -41,8 +41,8 @@
         <%= p.text_field :title %>
       </p>
       <p>
-        <%= p.label :description %>@@
-        <%= p.cktext_area :description %>
+        <%= p.label :description %>
+        <%= p.text_area :description %>
       </p>
     </div>
     <%= p.hidden_field :site_id %>

@@ -11,11 +11,11 @@ HotenticEngine::Engine.routes.draw do
 
   # edit sites and pages content
   scope module: 'edit' do
-    scope 'edition' do
+    scope 'edition', as: 'edit' do
       resources :sites, only: [:show], path: '/' do
         resources :pages, only: [:show], path: '/', param: :path
       end
-      resources :text_containers, only: [:update], path: 'edit_contenu', param: :reference
+      resources :text_containers, only: [:update], path: 'textes', param: :reference
     end
   end
 

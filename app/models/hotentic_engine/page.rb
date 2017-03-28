@@ -8,7 +8,7 @@ module HotenticEngine
     validates_uniqueness_of :path
 
     def full_page_template_path
-      @path = "shared/#{site.site_template.reference}/#{template_path}"
+      "shared/#{site.site_template.reference}/#{template_path}"
     end
 
     def text_content(reference)
