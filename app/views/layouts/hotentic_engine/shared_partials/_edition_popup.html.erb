@@ -2,30 +2,17 @@
   <div class="popup_container">
     <h2>Edition du container sélectionné :</h2>
 
-    <%= form_tag('', method: :patch) do %>
-      <textarea name="content_editor" class="content_editor"></textarea>
-      <input name="reference_container" class="reference_container"/>
-      <%= hidden_field_tag :page_id, @page.id %>
-      <%= hidden_field_tag :content, '', id: 'new_content' %>
-      <%= submit_tag 'Valider', id: 'accept_editor' %>
+    <%= form_for([:edit, @editable]) do |f| %>
+      <div>
+        <div>
+          <%= f.label :content %>
+          <%= f.text_area :content, { id: 'text_container' } %>
+        </div>
+        <%= hidden_field_tag :current_page, @current_page_id %>
+        <%= f.submit %>
+      </div>
     <% end %>
+
     <button id="cancel_editor">Annuler</button>
   </div>
 </section>
-
-<script type="application/javascript">
-    $(document).ready(function () {
-        CKEDITOR.replace('content_editor');
-
-        $('#cancel_editor').click(function () {
-            $('.popup').hide();
-        });
-
-        $('#accept_editor').click(function () {
-            new_content = CKEDITOR.instances['content_editor'].getData();
-            $("#new_content").val(new_content);
-            console.log("New values : " + new_content);
-            console.log("TextContainer reference : " + $(".reference_container").val());
-        })
-    });
-</script>

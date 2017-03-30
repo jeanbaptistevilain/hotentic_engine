@@ -6,21 +6,11 @@ module HotenticEngine
     end
     alias_method :nav, :main_navigation
 
-    def link_container(reference, path, site_content = false)
-      container = site_or_page_content(reference, site_content)
+    def link_container(reference, path, editable)
+      container = editable.text_content(reference)
       link_to container, path
     end
     alias_method :link, :link_container
-
-    private
-
-      def site_or_page_content(reference, site)
-        unless site
-          @page.text_content(reference)
-        else
-          @site.text_content(reference)
-        end
-      end
 
   end
 end

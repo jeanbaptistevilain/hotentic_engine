@@ -15,17 +15,4 @@
 <% end %>
 
 <!-- render the edition popup -->
-<%= render 'layouts/hotentic_engine/shared_partials/edition_popup' %>
-
-
-<script type="text/javascript">
-    $("text-editor").click(edit);
-
-    function edit() {
-        var eltId = $(this).attr('id');
-        $(".popup").show();
-        CKEDITOR.instances['content_editor'].setData($(this).text());
-        $(".reference_container").val(eltId).hide();
-        $(".popup form").attr("action", "/engine/edition/textes/" + eltId);
-    }
-</script>
+<section id="edit_container"></section>

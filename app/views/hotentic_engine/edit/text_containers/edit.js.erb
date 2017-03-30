@@ -1,0 +1,9 @@
+
+$("#edit_container").append("<%= j render partial: 'layouts/hotentic_engine/shared_partials/edition_popup', element: @editable %>");
+
+// CKEditor init and remove when cancel was clicked
+CKEDITOR.replace('text_container');
+$('#cancel_editor').click(function () {
+    CKEDITOR.instances.text_container.destroy(true);
+    $(".popup").remove();
+});

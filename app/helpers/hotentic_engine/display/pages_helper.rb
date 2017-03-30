@@ -9,7 +9,7 @@ module HotenticEngine
 
     def link_container(reference, path, editable)
       container = editable.text_content(reference)
-      link_to container, path
+      link_to container.html_safe, path
     end
     alias_method :link, :link_container
 

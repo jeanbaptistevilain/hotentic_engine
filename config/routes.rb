@@ -15,7 +15,7 @@ HotenticEngine::Engine.routes.draw do
       resources :sites, only: [:show], path: '/' do
         resources :pages, only: [:show], path: '/', param: :path
       end
-      resources :text_containers, only: [:update], path: 'textes', param: :reference
+      resources :text_containers, only: [:edit, :update], path: 'textes'
     end
   end
 
@@ -26,3 +26,4 @@ HotenticEngine::Engine.routes.draw do
   end
 
 end
+

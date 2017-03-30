@@ -16,7 +16,7 @@ module HotenticEngine
     end
 
     def default_content
-      self.content ||= "default content of text container"
+      self.content ||= "<p>default content of text container</p>"
     end
 
   end
