@@ -1,4 +1,5 @@
 require 'ckeditor'
+require 'paperclip'
 
 module HotenticEngine
   class Engine < ::Rails::Engine

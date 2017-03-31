@@ -1,5 +1,7 @@
 HotenticEngine::Engine.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   # display sites and pages content
   scope module: 'display' do
     scope 'apercu' do
@@ -16,6 +18,7 @@ HotenticEngine::Engine.routes.draw do
         resources :pages, only: [:show], path: '/', param: :path
       end
       resources :text_containers, only: [:edit, :update], path: 'textes'
+      resources :image_containers, only: [:edit, :update], path: 'images'
     end
   end
 

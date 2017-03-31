@@ -4,7 +4,7 @@ module HotenticEngine
   class Edit::TextContainersController < ApplicationController
 
     def edit
-      @editable = HotenticEngine::TextContainer.find_by_reference(params[:id])
+      @text = HotenticEngine::TextContainer.find_by_reference(params[:id])
       @current_page_id = params[:current_page];
     end
 
@@ -21,9 +21,9 @@ module HotenticEngine
 
     private
 
-    def text_container_params
-      params.require(:text_container).permit(:reference, :content, :page_id, :site_id)
-    end
+      def text_container_params
+        params.require(:text_container).permit(:reference, :content, :page_id, :site_id)
+      end
 
   end
 end

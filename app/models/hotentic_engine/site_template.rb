@@ -1,6 +1,6 @@
 module HotenticEngine
   class SiteTemplate < ApplicationRecord
-    has_many :sites, :class_name => 'HotenticEngine::Site'
+    has_many :sites, class_name: 'HotenticEngine::Site'
 
     store :template_pages, accessors: [ :pages_location ], coder: JSON
 

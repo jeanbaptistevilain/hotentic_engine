@@ -26,6 +26,18 @@ module HotenticEngine
     alias_method :link, :link_container
 
 
+    def image_container(reference, editable, size = :large)
+      image = editable.image_content(reference)
+
+      html_output =
+          "<image-editor id='#{reference}'>
+              #{image_tag(image.image.url(size), alt: image.image_file_name)}
+              #{link_to('edit_image', edit_edit_image_container_path(reference, current_page: @page.id), remote: true)}
+          </image-editor>".html_safe
+    end
+    alias_method :img, :image_container
+
+
 
   end
 end

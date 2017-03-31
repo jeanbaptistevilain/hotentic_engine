@@ -1,0 +1,21 @@
+
+<section class="popup">
+  <div class="popup_container">
+    <h2>Edition du container sélectionné :</h2>
+
+    <%= form_for([:edit, @image_container]) do |f| %>
+        <div>
+          <div>
+            <%= f.fields_for :image, @image_container.images do |i| %>
+                <%= i.label :image %>
+                <%= i.file_field :image, { id: 'image_container'} %>
+            <% end %>
+          </div>
+          <%= hidden_field_tag :current_page, @current_page_id %>
+          <%= f.submit %>
+        </div>
+    <% end %>
+
+    <button id="cancel_editor">Annuler</button>
+  </div>
+</section>
