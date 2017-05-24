@@ -1,7 +1,7 @@
 module HotenticEngine
   class Image < ApplicationRecord
-    has_many :contain_images, class_name: 'HotenticEngine::ContainImage', dependent: :destroy
-    has_many :image_containers, class_name: 'HotenticEngine::ImageContainer', through: :contain_images
+    has_many :contained_images, class_name: 'ContainedImage', dependent: :destroy
+    has_many :image_containers, class_name: 'ImageContainer', through: :contained_images
 
     has_attached_file :image,
                       {
@@ -13,7 +13,8 @@ module HotenticEngine
                               thumb: ['200x200>', :png]
                           },
                           url: '/pictures/:id/:style/:basename.:extension',
-                          path: ':rails_root/public/pictures/:id/:style/:basename.:extension'
+                          path: ':rails_root/public/pictures/:id/:style/:basename.:extension',
+                          default_url: ':rails_root/public/picture/missing.png'
                       }
 
     validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/png']

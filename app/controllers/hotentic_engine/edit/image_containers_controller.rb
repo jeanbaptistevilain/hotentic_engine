@@ -5,6 +5,7 @@ module HotenticEngine
 
     def edit
       @image_container = HotenticEngine::ImageContainer.find_by_reference(params[:id])
+      @image_container.contained_images.build(image: HotenticEngine::Image.new)
       @current_page_id = params[:current_page]
     end
 
@@ -22,7 +23,8 @@ module HotenticEngine
     private
 
       def image_containers_params
-        params.require(:image_container).permit(:id, :reference, :page_id, :site_id, :image)
+        params.require(:image_container).permit(:id, :reference, :page_id, :site_id,
+                                                contained_images_attributes: [:id, :image_container_id, image_attributes: [:id, :image]])
       end
 
   end

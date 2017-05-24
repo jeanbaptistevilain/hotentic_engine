@@ -19,6 +19,7 @@ HotenticEngine::Engine.routes.draw do
       end
       resources :text_containers, only: [:edit, :update], path: 'textes'
       resources :image_containers, only: [:edit, :update], path: 'images'
+      resources :contained_images, only: [:edit, :update]
     end
   end
 

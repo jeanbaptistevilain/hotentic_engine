@@ -17,7 +17,12 @@ module HotenticEngine
 
     def image_container(reference, editable)
       container = editable.image_content(reference)
-      image_tag container.url, alt: container.image_file_name
+
+      if !container.nil?
+        image_tag container.url, alt: container.image_file_name
+      else
+        image_tag '/pictures/missing.png'
+      end
     end
     alias_method :img, :image_container
 
