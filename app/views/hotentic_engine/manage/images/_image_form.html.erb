@@ -1,0 +1,9 @@
+
+<%= form_for [:manage, @site, @image] do |i| %>
+  <div>
+    <%= i.hidden_field :site_reference, value: @site.id %>
+    <%= i.label :image %>
+    <%= i.file_field :image %>
+  </div>
+  <%= i.submit 'Submit'  %>
+<% end %>

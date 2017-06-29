@@ -1,3 +1,4 @@
+# This migration comes from hotentic_engine (originally 20170208105233)
 class CreateHotenticEngineImageContainers < ActiveRecord::Migration[5.0]
   def change
     create_table :hotentic_engine_image_containers do |t|

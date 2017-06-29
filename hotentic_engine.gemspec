@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency "ckeditor"
   s.add_dependency "paperclip"
+  s.add_dependency "jbuilder"
 
   s.add_development_dependency "sqlite3"
 end

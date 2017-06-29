@@ -23,21 +23,19 @@ module HotenticEngine
 
 
     def image_container(reference, editable, size = :large)
-      image = editable.image_content(reference)
+      images = editable.image_content(reference)
 
-      img_tag = ""
-      if image.nil?
-        img_tag = "#{image_tag('/pictures/missing.png') }"
+      if images.blank?
         "<image-editor id='#{reference}'>
           #{image_tag('/pictures/missing.png')}
           #{link_to('add_image', edit_edit_image_container_path(reference, current_page: @page.id), remote: true)}
         </image-editor>".html_safe
       else
-        "<image-editor id='#{reference}'>
-          #{image_tag(image.image.url(size), alt: image.image_file_name)}
-          #{link_to('add_image', edit_edit_image_container_path(reference, current_page: @page.id), remote: true)}
-          #{link_to('edit_image', edit_edit_image_container_path(reference, current_page: @page.id), remote: true)}
-        </image-editor>".html_safe
+        editor = "<image-editor id='#{reference}'>"
+          images.collect {|i| editor += "#{image_tag(i.image.url(size), alt: i.image_file_name)}"}
+          editor += "#{link_to('edit_image', edit_edit_image_container_path(reference, current_page: @page.id), remote: true)}"
+        editor += "</image-editor>"
+        editor.html_safe
       end
 
 

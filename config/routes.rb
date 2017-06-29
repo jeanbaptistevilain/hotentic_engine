@@ -26,6 +26,7 @@ HotenticEngine::Engine.routes.draw do
   namespace :manage, path: 'gestion' do
     scope ':site', as: 'site' do
       resources :pages
+      resources :images, only: [:index, :create, :destroy]
     end
   end
 

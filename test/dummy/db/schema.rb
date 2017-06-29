@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170210153041) do
     t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["page_id"], name: "idx_image_containers_to_page_id"
+    t.new ["page_id"], name: "idx_image_containers_to_page_id"
     t.index ["site_id"], name: "idx_image_containers_to_site_id"
   end
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170210153041) do
     t.boolean  "active"
     t.string   "metadata"
     t.string   "template_path"
-    t.index ["site_id"], name: "idx_pages_to_site_id"
+    t.new ["site_id"], name: "idx_pages_to_site_id"
   end
 
   create_table "hotentic_engine_site_templates", force: :cascade do |t|
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170210153041) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "name"
-    t.index ["site_template_id"], name: "idx_sites_to_site_template_id"
+    t.new ["site_template_id"], name: "idx_sites_to_site_template_id"
   end
 
   create_table "hotentic_engine_text_containers", force: :cascade do |t|
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170210153041) do
     t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["page_id"], name: "idx_text_containers_to_page_id"
+    t.new ["page_id"], name: "idx_text_containers_to_page_id"
     t.index ["site_id"], name: "idx_text_containers_to_site_id"
   end
 

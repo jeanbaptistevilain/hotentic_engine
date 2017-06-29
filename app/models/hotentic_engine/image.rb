@@ -20,8 +20,19 @@ module HotenticEngine
     validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/png']
     validates_attachment_size :image, less_than: 25.megabytes
 
-
-
+    def used_where
+      location = []
+      unless image_containers.blank?
+        image_containers.each do |ic|
+          if ic.page.blank?
+            location << 'site content'
+          else
+            location << ic.page.path
+          end
+        end
+      end
+      location
+    end
 
   end
 end

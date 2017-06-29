@@ -18,8 +18,12 @@ module HotenticEngine
 
     def image_content(reference)
       image_containers.find_or_create_by!(reference: reference)
+      image_containers.image.all
     end
 
+    def get_images
+      HotenticEngine::Image.where("site_reference = ?", id)
+    end
 
   end
 end

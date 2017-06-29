@@ -17,9 +17,8 @@ module HotenticEngine
 
     def image_content(reference)
       picture = image_containers.find_or_create_by!(reference: reference)
-      picture.images.first
+      picture.images.all
     end
-
 
   end
 end

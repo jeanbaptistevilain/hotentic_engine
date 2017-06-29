@@ -15,11 +15,14 @@ module HotenticEngine
     alias_method :link, :link_container
 
 
-    def image_container(reference, editable)
-      container = editable.image_content(reference)
+    def image_container(reference, editable, size = :large)
+      containers = editable.image_content(reference)
 
-      if !container.nil?
-        image_tag container.url, alt: container.image_file_name
+      if !containers.blank?
+        img_container = "<div>"
+        containers.collect {|c| img_container += "#{image_tag c.image.url(size), alt: c.image_file_name}"}
+        img_container += "</div>"
+        img_container.html_safe
       else
         image_tag '/pictures/missing.png'
       end

@@ -9,13 +9,12 @@
             <%= f.fields_for :contained_images do |ci| %>
                 <%= ci.hidden_field :image_container_id, value: @image_container.id %>
 
-                <%= ci.fields_for :image do |i| %>
-                  <%= i.label :image %>
-                  <%= i.file_field :image, { id: 'image_uploader'} %>
-                <% end %>
+                <%= ci.label "Images" %>
+                <%= ci.select :image_id, @images.collect {|img| [img.image_file_name, img.id]}, { prompt: 'Select an item' } %>
             <% end %>
           </div>
-          <%= hidden_field_tag :current_page, @current_page_id %>
+
+          <%= hidden_field_tag :current_page, @current_page.id %>
           <%= f.submit %>
         </div>
     <% end %>

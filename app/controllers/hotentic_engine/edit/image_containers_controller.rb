@@ -2,11 +2,14 @@ require_dependency "hotentic_engine/application_controller"
 
 module HotenticEngine
   class Edit::ImageContainersController < ApplicationController
+    before_action :modify_params, only: :update
 
     def edit
       @image_container = HotenticEngine::ImageContainer.find_by_reference(params[:id])
-      @image_container.contained_images.build(image: HotenticEngine::Image.new)
-      @current_page_id = params[:current_page]
+      @image_container.contained_images.build(image: HotenticEngine::Image.new) unless !@image_container.contained_images.blank?
+
+      @images = HotenticEngine::Image.all
+      @current_page = HotenticEngine::Page.find(params[:current_page])
     end
 
     def update
@@ -22,10 +25,14 @@ module HotenticEngine
 
     private
 
-      def image_containers_params
-        params.require(:image_container).permit(:id, :reference, :page_id, :site_id,
-                                                contained_images_attributes: [:id, :image_container_id, image_attributes: [:id, :image]])
-      end
+    def image_containers_params
+      params.require(:image_container).permit(:id, :reference, :page_id, :site_id,
+                                              contained_images_attributes: [:id, :image_container_id, :image_id])
+    end
+
+    def modify_params
+      debugger = true
+    end
 
   end
 end

@@ -1,0 +1,39 @@
+
+<section>
+  <h1><%= @site.name %> images</h1>
+  <%= notice %>
+
+  <%= render 'image_form' %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Thumb</th>
+        <th>Name</th>
+        <th>Used</th>
+        <th>Added at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @images.each do |i| %>
+        <tr>
+          <td><%= image_tag i.image.url(:thumb) %></td>
+          <td><%= i.image_file_name %></td>
+          <td>
+            <% if i.used_where.blank? %>
+              Used no where
+            <% else %>
+              <% i.used_where.each do |u| %>
+                <%= u %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= i.created_at.strftime('%F') %></td>
+          <td><%= link_to 'Delete', manage_site_image_path(i.site_reference, i.id), method: :delete, data: { confirm: 'Are you sure ?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>
